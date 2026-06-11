@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-light: #fcfaf8;
+  --color-brand-nude: #f2e5d9;
+  --color-brand-rose: #efdccc;
+  --color-brand-medium: #dbc2ad;
+  --color-brand-taupe: #a18167;
+  --color-brand-dark: #3b2e25;
+  --color-brand-black: #000000;
+
+  --color-brand-nude-1: #f2e5d9;
+  --color-brand-nude-2: #efdccc;
+  --color-brand-nude-3: #e9d3c0;
+  --color-brand-nude-4: #dbc2ad;
+  --color-brand-nude-5: #a18167;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-slow: marquee 60s linear infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-brand-light font-sans text-brand-dark antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-taupe);
+    color: var(--color-brand-light);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-brand-light);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-brand-medium);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-taupe);
+  }
+}
+
+/* Papirnata tekstura (hero na mobilnem, glave strani) */
+.texture-paper {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
